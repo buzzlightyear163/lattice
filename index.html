@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>LATTICE — Built for the day after Q-day</title>
+  <meta name="description" content="Your Solana address is your public key. LATTICE shows how long it has been in the open, then forges a post-quantum ML-DSA or Falcon key for it in your browser." />
+  <meta name="theme-color" content="#f6f7f4" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LATTICE — Built for the day after Q-day" />
+  <meta property="og:description" content="Scan your Solana wallet's quantum exposure. Forge a post-quantum key in your browser." />
+  <meta property="og:image" content="/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="LATTICE — Built for the day after Q-day" />
+  <meta name="twitter:image" content="/og.png" />
+</head>
+<body>
+  <canvas id="specimen" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="LATTICE home">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id='mnt' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#FBFBFB'/><stop offset='1' stop-color='#F0F0F0'/></linearGradient><linearGradient id='mnf' x1='0' y1='0' x2='0.45' y2='1'><stop offset='0' stop-color='#EFEFEF'/><stop offset='1' stop-color='#DADADA'/></linearGradient><linearGradient id='mnr' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#A9A9A9'/><stop offset='1' stop-color='#7E7E7E'/></linearGradient><filter id='mnsoft' x='-2%' y='-2%' width='104%' height='104%'><feGaussianBlur stdDeviation='0.35'/></filter></defs><rect width='64' height='64' rx='14.1' fill='#000'/><rect x='.5' y='.5' width='63' height='63' rx='13.6' fill='none' stroke='#fff' stroke-opacity='.10'/><g><polygon points='32.77,49.71 33.97,48.51 33.97,53.49 32.77,54.69' fill='url(#mnr)'/><polygon points='38.37,49.71 39.57,48.51 39.57,53.49 38.37,54.69' fill='url(#mnr)'/><polygon points='43.97,49.71 45.17,48.51 45.17,53.49 43.97,54.69' fill='url(#mnr)'/><polygon points='49.57,49.71 50.77,48.51 50.77,53.49 49.57,54.69' fill='url(#mnr)'/><polygon points='27.79,49.71 32.77,49.71 33.97,48.51 28.99,48.51' fill='url(#mnt)'/><polygon points='33.39,49.71 38.37,49.71 39.57,48.51 34.59,48.51' fill='url(#mnt)'/><polygon points='38.99,49.71 43.97,49.71 45.17,48.51 40.19,48.51' fill='url(#mnt)'/><polygon points='44.59,49.71 49.57,49.71 50.77,48.51 45.79,48.51' fill='url(#mnt)'/><polygon points='27.17,44.11 28.37,42.91 28.37,47.89 27.17,49.09' fill='url(#mnr)'/><polygon points='32.77,44.11 33.97,42.91 33.97,47.89 32.77,49.09' fill='url(#mnr)'/><polygon points='38.37,44.11 39.57,42.91 39.57,47.89 38.37,49.09' fill='url(#mnr)'/><polygon points='22.19,44.11 27.17,44.11 28.37,42.91 23.39,42.91' fill='url(#mnt)'/><polygon points='27.79,44.11 32.77,44.11 33.97,42.91 28.99,42.91' fill='url(#mnt)'/><polygon points='33.39,44.11 38.37,44.11 39.57,42.91 34.59,42.91' fill='url(#mnt)'/><polygon points='27.17,38.51 28.37,37.31 28.37,42.29 27.17,43.49' fill='url(#mnr)'/><polygon points='32.77,38.51 33.97,37.31 33.97,42.29 32.77,43.49' fill='url(#mnr)'/><polygon points='22.19,38.51 27.17,38.51 28.37,37.31 23.39,37.31' fill='url(#mnt)'/><polygon points='27.79,38.51 32.77,38.51 33.97,37.31 28.99,37.31' fill='url(#mnt)'/><polygon points='27.17,32.91 28.37,31.71 28.37,36.69 27.17,37.89' fill='url(#mnr)'/><polygon points='32.77,32.91 33.97,31.71 33.97,36.69 32.77,37.89' fill='url(#mnr)'/><polygon points='22.19,32.91 27.17,32.91 28.37,31.71 23.39,31.71' fill='url(#mnt)'/><polygon points='27.79,32.91 32.77,32.91 33.97,31.71 28.99,31.71' fill='url(#mnt)'/><polygon points='27.17,27.31 28.37,26.11 28.37,31.09 27.17,32.29' fill='url(#mnr)'/><polygon points='32.77,27.31 33.97,26.11 33.97,31.09 32.77,32.29' fill='url(#mnr)'/><polygon points='22.19,27.31 27.17,27.31 28.37,26.11 23.39,26.11' fill='url(#mnt)'/><polygon points='27.79,27.31 32.77,27.31 33.97,26.11 28.99,26.11' fill='url(#mnt)'/><polygon points='27.17,21.71 28.37,20.51 28.37,25.49 27.17,26.69' fill='url(#mnr)'/><polygon points='32.77,21.71 33.97,20.51 33.97,25.49 32.77,26.69' fill='url(#mnr)'/><polygon points='22.19,21.71 27.17,21.71 28.37,20.51 23.39,20.51' fill='url(#mnt)'/><polygon points='27.79,21.71 32.77,21.71 33.97,20.51 28.99,20.51' fill='url(#mnt)'/><polygon points='21.57,16.11 22.77,14.91 22.77,19.89 21.57,21.09' fill='url(#mnr)'/><polygon points='27.17,16.11 28.37,14.91 28.37,19.89 27.17,21.09' fill='url(#mnr)'/><polygon points='32.77,16.11 33.97,14.91 33.97,19.89 32.77,21.09' fill='url(#mnr)'/><polygon points='16.59,16.11 21.57,16.11 22.77,14.91 17.79,14.91' fill='url(#mnt)'/><polygon points='22.19,16.11 27.17,16.11 28.37,14.91 23.39,14.91' fill='url(#mnt)'/><polygon points='27.79,16.11 32.77,16.11 33.97,14.91 28.99,14.91' fill='url(#mnt)'/><polygon points='21.57,10.51 22.77,9.31 22.77,14.29 21.57,15.49' fill='url(#mnr)'/><polygon points='27.17,10.51 28.37,9.31 28.37,14.29 27.17,15.49' fill='url(#mnr)'/><polygon points='32.77,10.51 33.97,9.31 33.97,14.29 32.77,15.49' fill='url(#mnr)'/><polygon points='16.59,10.51 21.57,10.51 22.77,9.31 17.79,9.31' fill='url(#mnt)'/><polygon points='22.19,10.51 27.17,10.51 28.37,9.31 23.39,9.31' fill='url(#mnt)'/><polygon points='27.79,10.51 32.77,10.51 33.97,9.31 28.99,9.31' fill='url(#mnt)'/><rect x='27.79' y='49.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='33.39' y='49.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='38.99' y='49.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='44.59' y='49.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='44.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='44.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='33.39' y='44.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='38.51' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='38.51' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='32.91' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='32.91' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='27.31' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='27.31' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='21.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='21.71' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='16.59' y='16.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='16.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='16.11' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='16.59' y='10.51' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='22.19' y='10.51' width='4.98' height='4.98' fill='url(#mnf)'/><rect x='27.79' y='10.51' width='4.98' height='4.98' fill='url(#mnf)'/></g></svg>
+      <span>Lattice</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#exposure">Exposure</a>
+      <a href="#how">How it works</a>
+      <a href="#vault">Vault</a>
+      <a href="#verify">Verify</a>
+      <a href="#token">Token</a>
+    </nav>
+    <div class="nav-right">
+      <span class="keychip" data-keychip data-state="exposed" title="The key your wallet relies on right now">
+        <i aria-hidden="true"></i><span data-keychip-text>Ed25519 key, exposed</span>
+      </span>
+      <a class="btn btn-solid btn-sm" data-buy href="#" target="_blank" rel="noopener">Buy <span class="tk">$LATTICE</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="hero-kicker"><span class="dot" aria-hidden="true"></span>Post-quantum key forge for Solana</p>
+        <h1 class="h1" data-split>Built for the day after Q-day.<sup class="fn-ref"><a href="#fn1" aria-label="Footnote 1">1</a></sup></h1>
+        <p class="lede">Your Solana address is your public key. A big enough quantum computer turns it back into your private key. Scan a wallet to see how long its key has been in the open, then forge a post-quantum key for it, right here in your browser.</p>
+
+        <form class="scan" id="scan-form" autocomplete="off">
+          <label class="sr-only" for="addr">Solana wallet address</label>
+          <div class="scan-field">
+            <span class="scan-prompt" aria-hidden="true">scan</span>
+            <input id="addr" name="addr" spellcheck="false" placeholder="Paste a Solana wallet address" inputmode="text" />
+            <button class="btn btn-solid" type="submit" data-scan-btn>Scan exposure</button>
+          </div>
+          <p class="scan-meta">
+            <span>Read-only. No wallet connection, no seed phrase.</span>
+            <button type="button" class="link" data-forge-direct>Forge without scanning</button>
+          </p>
+          <p class="scan-error" role="alert" data-scan-error hidden></p>
+        </form>
+
+        <div class="report" id="report" hidden aria-live="polite">
+          <div class="report-head">
+            <span class="report-title" data-report-title>Exposure report</span>
+            <span class="report-addr mono" data-report-addr></span>
+          </div>
+          <dl class="report-rows" data-report-rows></dl>
+          <div class="report-actions">
+            <div class="seg" role="radiogroup" aria-label="Post-quantum scheme" data-scheme-seg>
+              <button type="button" role="radio" aria-checked="true" data-scheme="ml-dsa-65">ML-DSA-65<small>FIPS 204</small></button>
+              <button type="button" role="radio" aria-checked="false" data-scheme="falcon-512">Falcon-512<small>Solana’s pick</small></button>
+            </div>
+            <button type="button" class="btn btn-solid btn-forge" data-forge>
+              <span class="btn-label">Forge lattice key</span>
+              <span class="btn-progress" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="report-after" data-report-after hidden>
+            <a class="btn btn-solid" href="#seal">See your seal</a>
+            <button type="button" class="btn btn-ghost" data-keyfile>Download keyfile</button>
+            <button type="button" class="link report-again" data-forge-again>Forge another</button>
+          </div>
+        </div>
+
+        <p class="footnote" id="fn1"><sup>1</sup> Q-day: the first day a quantum computer can break the signatures that protect Solana wallets today.</p>
+      </div>
+
+      <div class="hero-stage">
+        <div class="scope" data-specimen-slot="live" data-fill="0.36" data-backdrop="circle:0.408">
+          <svg class="reticle" viewBox="0 0 1000 1000" aria-hidden="true" data-reticle></svg>
+          <span class="axis axis-p" aria-hidden="true">P</span>
+          <span class="axis axis-a" aria-hidden="true">A</span>
+          <div class="scope-note scope-note-tl mono" data-anno-a>Curve25519<br />p = 2<sup>255</sup> − 19</div>
+          <div class="scope-note scope-note-br mono" data-anno-b>public key<br />32 bytes</div>
+          <div class="scope-theta mono" aria-hidden="true">θ <span data-theta>0.0</span>°<span class="scope-hint">drag to rotate</span></div>
+          <span class="scope-pulse" aria-hidden="true"></span>
+        </div>
+        <figure class="fig">
+          <figcaption><em>Fig. 1</em> <span data-fig-caption>Your Ed25519 key between crossed polarizers. Strain shows up as colour.</span></figcaption>
+          <div class="colorbar">
+            <canvas width="480" height="6" data-colorbar></canvas>
+            <i class="colorbar-mark" data-colorbar-mark></i>
+            <div class="colorbar-scale mono"><span>0</span><span>400</span><span>800</span><span>1200 nm</span></div>
+          </div>
+          <dl class="fig-stats mono">
+            <div><dt>strain</dt><dd data-stat-strain>0.000</dd></div>
+            <div><dt>defects</dt><dd data-stat-defects>0</dd></div>
+            <div><dt>nodes</dt><dd data-stat-nodes>0</dd></div>
+          </dl>
+        </figure>
+
+        <section class="tty" id="tty" aria-label="Terminal">
+          <header class="tty-head">
+            <span class="tty-title mono">lattice — tty</span>
+            <span class="tty-status mono" data-tty-status>local</span>
+          </header>
+          <div class="tty-body mono" role="log" aria-live="polite" data-tty-body></div>
+          <form class="tty-input mono" data-tty-form>
+            <span class="tty-ps1" aria-hidden="true">$</span>
+            <input aria-label="Terminal command. Type help." spellcheck="false" autocomplete="off" data-tty-input placeholder="help" />
+          </form>
+        </section>
+      </div>
+
+      <div class="hero-strip mono" aria-label="Live status">
+        <span><i class="live" aria-hidden="true"></i>Solana slot <b data-slot>…</b></span>
+        <span>Forge engine <b data-forge-engine>loading</b></span>
+        <span>Bytes sent while forging <b>0</b></span>
+      </div>
+    </section>
+
+    <!-- ============ SEAL ============ -->
+    <section class="sec seal" id="seal">
+      <div class="sec-head">
+        <p class="sec-num mono">Result</p>
+        <div>
+          <h2 class="h2">Your seal</h2>
+          <p class="sec-lede" data-seal-lede>A seal is a short statement, signed by your new lattice key, that binds it to your wallet. Scan a wallet or forge a key and your card appears here.</p>
+        </div>
+      </div>
+      <div class="seal-grid">
+        <div class="seal-card-wrap">
+          <canvas class="seal-card" width="1200" height="675" data-seal-canvas aria-label="Seal card"></canvas>
+          <p class="seal-card-note" data-seal-note><em>Specimen.</em> This card shows sample data until you scan or forge.</p>
+        </div>
+        <div class="seal-actions">
+          <div class="act-group">
+            <h3 class="h4">Share</h3>
+            <div class="act-row">
+              <button type="button" class="btn btn-solid" data-share-x disabled>Post on X</button>
+              <button type="button" class="btn btn-ghost" data-copy-img disabled>Copy image</button>
+              <button type="button" class="btn btn-ghost" data-dl-img disabled>Download image</button>
+            </div>
+            <p class="act-note">X can’t attach images from a link. Copy the image, then paste it into your post.</p>
+          </div>
+          <div class="act-group">
+            <h3 class="h4">Keep</h3>
+            <div class="act-row">
+              <button type="button" class="btn btn-ghost" data-dl-seal disabled>Download seal file</button>
+              <button type="button" class="btn btn-ghost" data-keyfile disabled>Download keyfile</button>
+            </div>
+            <p class="act-note">The seal file is public; anyone can verify it. The keyfile holds your lattice secret key. It never leaves this page unless you download it.</p>
+          </div>
+          <div class="act-group">
+            <h3 class="h4">Co-sign</h3>
+            <p class="act-note">Have your current wallet sign the same pledge. Both signatures together prove the old key and the new one belong to the same person, something nobody can prove after Q-day.</p>
+            <div class="act-row">
+              <button type="button" class="btn btn-ghost" data-cosign disabled>Co-sign with wallet</button>
+            </div>
+            <p class="act-note act-status mono" data-cosign-status>Message signature only. Never a transaction.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ §1 SEQUENCE ============ -->
+    <section class="seq" id="exposure" aria-label="Why your Solana key is exposed" data-specimen-hide>
+      <div class="seq-pin">
+        <canvas class="seq-canvas" data-seq-canvas aria-hidden="true"></canvas>
+        <div class="seq-copy">
+          <p class="sec-num mono">§1</p>
+          <h2 class="h2 seq-title">Your address is your public key.</h2>
+          <ol class="seq-steps" data-seq-steps>
+            <li data-step="0" class="on">
+              <span class="seq-n mono">1.1</span>
+              <p>A Solana address is 32 bytes written in base58. On Bitcoin, an unused address hides your key behind a hash. On Solana there is no hash. The address is the key.</p>
+            </li>
+            <li data-step="1">
+              <span class="seq-n mono">1.2</span>
+              <p>That key is a point <i>A</i> on Curve25519: a fixed point <i>B</i>, multiplied by your secret number <i>a</i>. Multiplying forward takes microseconds. Walking back from <i>A</i> to <i>a</i> takes a classical computer about 2<sup>128</sup> steps.</p>
+            </li>
+            <li data-step="2">
+              <span class="seq-n mono">1.3</span>
+              <p>Shor’s algorithm walks it back. Google Quantum AI’s 2026 estimate for a 256-bit curve: under 1,200 logical qubits, under half a million physical qubits, minutes of runtime.<a class="cite" href="https://arxiv.org/abs/2603.28846" target="_blank" rel="noopener">Babbush et al., 2026</a></p>
+            </li>
+            <li data-step="3">
+              <span class="seq-n mono">1.4</span>
+              <p>Lattices have no such shortcut. ML-DSA and Falcon hide the secret as a short vector in a lattice of more than a thousand dimensions, and no known quantum algorithm finds it efficiently. That is the key LATTICE forges.</p>
+            </li>
+          </ol>
+          <div class="seq-readout mono" aria-hidden="true">
+            <span data-seq-k>Ed25519 public key</span>
+            <b data-seq-v>32 bytes</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ §2 HOW ============ -->
+    <section class="sec how" id="how">
+      <div class="sec-head">
+        <p class="sec-num mono">§2</p>
+        <div>
+          <h2 class="h2">Scan, forge, seal.</h2>
+          <p class="sec-lede">The scan reads public chain data. Forging and sealing run in a Web Worker on your device, with open-source code you can read, and send nothing anywhere. Press Run to execute each step right here.</p>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="step-top"><span class="step-n mono">2.1</span><h3 class="h3">Scan</h3></div>
+          <p>LATTICE checks that your address is a real point on Curve25519, then reads its balance, its tokens and how far back its signatures go.</p>
+          <div class="code-wrap">
+<pre class="code"><code><span class="k">const</span> bytes = base58.decode(address);
+<span class="c">// a wallet address is a point on the curve</span>
+<span class="k">const</span> A = ed25519.Point.fromBytes(bytes);</code></pre>
+            <button type="button" class="run mono" data-run="scan">Run</button>
+          </div>
+          <pre class="code-out mono" data-out="scan" hidden></pre>
+        </li>
+        <li class="step">
+          <div class="step-top"><span class="step-n mono">2.2</span><h3 class="h3">Forge</h3></div>
+          <p>A fresh key pair from 32 bytes of browser randomness. ML-DSA-65 takes a few milliseconds. Falcon-512 takes a few hundred.</p>
+<div class="code-wrap">
+<pre class="code"><code><span class="k">import</span> { ml_dsa65 }
+  <span class="k">from</span> <span class="s">'@noble/post-quantum/ml-dsa.js'</span>;
+<span class="k">const</span> { publicKey, secretKey } =
+  ml_dsa65.keygen(randomBytes(<span class="n">32</span>));</code></pre>
+            <button type="button" class="run mono" data-run="forge">Run</button>
+          </div>
+          <pre class="code-out mono" data-out="forge" hidden></pre>
+        </li>
+        <li class="step">
+          <div class="step-top"><span class="step-n mono">2.3</span><h3 class="h3">Seal</h3></div>
+          <p>The new key signs a pledge naming your wallet and its own fingerprint. LATTICE verifies the signature before showing you the card.</p>
+<div class="code-wrap">
+<pre class="code"><code><span class="k">const</span> sig = ml_dsa65.sign(
+  pledge, secretKey);
+ml_dsa65.verify(sig, pledge, publicKey);
+<span class="c">// → true</span></code></pre>
+            <button type="button" class="run mono" data-run="seal">Run</button>
+          </div>
+          <pre class="code-out mono" data-out="seal" hidden></pre>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ §3 SPACE ============ -->
+    <section class="sec space" id="space">
+      <div class="sec-head">
+        <p class="sec-num mono">§3</p>
+        <div>
+          <h2 class="h2">Security takes space.</h2>
+          <p class="sec-lede">A post-quantum public key is bigger, because its security lives in structure rather than in a single point. Each column below holds 32 bytes, one Ed25519 key.</p>
+        </div>
+      </div>
+      <div class="space-body">
+        <div class="seg seg-wide" role="radiogroup" aria-label="Compare scheme" data-space-seg>
+          <button type="button" role="radio" aria-checked="false" data-space="falcon-512">Falcon-512</button>
+          <button type="button" role="radio" aria-checked="true" data-space="ml-dsa-65">ML-DSA-65</button>
+          <button type="button" role="radio" aria-checked="false" data-space="ml-dsa-87">ML-DSA-87</button>
+        </div>
+        <div class="space-figure">
+          <div class="space-ed">
+            <canvas data-space-ed aria-hidden="true"></canvas>
+            <p class="mono"><b>Ed25519</b> 32 bytes, 1 column</p>
+          </div>
+          <div class="space-pq">
+            <canvas data-space-pq aria-hidden="true"></canvas>
+            <p class="mono"><b data-space-name>ML-DSA-65</b> <span data-space-bytes>1,952 bytes, 61 columns</span></p>
+          </div>
+        </div>
+        <table class="space-table mono">
+          <thead><tr><th scope="col"></th><th scope="col">Ed25519</th><th scope="col" data-space-th>ML-DSA-65</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Public key</th><td>32 B</td><td data-space-pk>1,952 B</td></tr>
+            <tr><th scope="row">Signature</th><td>64 B</td><td data-space-sig>3,309 B</td></tr>
+            <tr><th scope="row">Secret key</th><td>32 B</td><td data-space-sk>4,032 B</td></tr>
+            <tr><th scope="row">Survives Shor</th><td class="no">No</td><td>Yes</td></tr>
+            <tr><th scope="row">NIST security category</th><td>—</td><td data-space-level>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ §4 VAULT ============ -->
+    <section class="sec vault" id="vault">
+      <div class="sec-head">
+        <p class="sec-num mono">§4</p>
+        <div>
+          <h2 class="h2">The vault opens when Solana speaks post-quantum.</h2>
+          <p class="sec-lede">Every Solana wallet is secured by an Ed25519 signature today. In April 2026 its two main validator clients, Anza and Firedancer, each built Falcon into test code for the day that changes. The LATTICE vault is built for that day: a program that releases funds only to a lattice signature. It is in testing, and deposits are closed.</p>
+        </div>
+      </div>
+      <div class="vault-grid">
+        <div class="chamber" data-backdrop="rect">
+          <div class="chamber-slot" data-specimen-slot="vault" data-fill="0.4"></div>
+          <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+          <p class="chamber-label mono">Chamber 01</p>
+          <p class="chamber-state mono"><i aria-hidden="true"></i>Deposits closed</p>
+          <p class="chamber-caption"><em>Fig. 4</em> <span data-chamber-caption>Your key as it is today. It can enter the vault once it is sealed.</span></p>
+        </div>
+        <div class="vault-side">
+          <dl class="readout">
+            <div><dt>Vault program</dt><dd>In testing</dd></div>
+            <div><dt>Accepts</dt><dd>ML-DSA-65, Falcon-512</dd></div>
+            <div><dt>Deposits</dt><dd>Closed</dd></div>
+            <div><dt>Opens</dt><dd>When Solana verifies lattice signatures</dd></div>
+            <div><dt>Your key</dt><dd data-vault-key>Not forged</dd></div>
+          </dl>
+          <div class="flow" aria-label="How the vault will work">
+            <div class="flow-node"><b>Your wallet</b><span class="mono">Ed25519</span></div>
+            <div class="flow-edge"><span class="mono">co-signs</span></div>
+            <div class="flow-node flow-node-lit"><b>Lattice key</b><span class="mono" data-flow-scheme>ML-DSA-65</span></div>
+            <div class="flow-edge flow-edge-dashed"><span class="mono">unlocks</span></div>
+            <div class="flow-node flow-node-dim"><b>Vault program</b><span class="mono">in testing</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="honest">
+        <div>
+          <h3 class="h4">Runs today</h3>
+          <ul class="ticks">
+            <li>ML-DSA and Falcon key generation in your browser</li>
+            <li>Signing and verifying your pledge</li>
+            <li>Ed25519 co-signature check against your wallet</li>
+            <li>Exposure data read live from Solana</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="h4">Not live yet</h3>
+          <ul class="ticks ticks-open">
+            <li>The on-chain vault program</li>
+            <li>Moving tokens into the vault</li>
+            <li>Lattice signature checks on Solana itself</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ §5 VERIFY ============ -->
+    <section class="sec verify" id="verify">
+      <div class="sec-head">
+        <p class="sec-num mono">§5</p>
+        <div>
+          <h2 class="h2">Don’t trust a seal. Verify it.</h2>
+          <p class="sec-lede">Drop or paste any seal file. LATTICE recomputes the fingerprint, checks the lattice signature and, if the wallet co-signed, the Ed25519 signature too. All on your device.</p>
+        </div>
+      </div>
+      <div class="verify-grid">
+        <div class="drop" data-drop>
+          <label class="sr-only" for="seal-input">Seal file contents</label>
+          <textarea id="seal-input" class="mono" spellcheck="false" placeholder='{ "lattice": "seal/v1", … }' data-verify-input></textarea>
+          <div class="drop-bar">
+            <span class="mono">Drop a .json seal file or paste it</span>
+            <div class="act-row">
+              <button type="button" class="btn btn-ghost btn-sm" data-verify-mine disabled>Use my seal</button>
+              <button type="button" class="btn btn-ghost btn-sm" data-verify-sample>Load a sample</button>
+              <button type="button" class="btn btn-solid btn-sm" data-verify-run>Verify seal</button>
+            </div>
+          </div>
+        </div>
+        <ol class="verify-out mono" data-verify-out aria-live="polite">
+          <li class="muted">Waiting for a seal.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ §6 Q-LOG ============ -->
+    <section class="sec qlog" id="qlog">
+      <div class="sec-head">
+        <p class="sec-num mono">§6</p>
+        <div>
+          <h2 class="h2">The road to Q-day.</h2>
+          <p class="sec-lede">Nobody knows the date. Here is how close the parts already are.</p>
+        </div>
+      </div>
+      <ol class="timeline">
+        <li><time class="mono">1994</time><p>Peter Shor publishes a quantum algorithm for factoring and discrete logarithms, the problems behind RSA and elliptic curves.</p></li>
+        <li><time class="mono">Mar 2020</time><p>Solana’s mainnet beta goes live. Every wallet address is an Ed25519 public key.</p></li>
+        <li><time class="mono">Aug 2024</time><p>NIST publishes FIPS 203, 204 and 205. ML-DSA becomes the standard post-quantum signature.</p></li>
+        <li><time class="mono">Nov 2024</time><p>NIST’s draft transition plan: quantum-vulnerable signatures such as ECDSA deprecated after 2030, disallowed after 2035.</p></li>
+        <li><time class="mono">Dec 2024</time><p>Google’s Willow chip shows error rates falling as its qubit grid grows, a key threshold for error correction.</p></li>
+        <li><time class="mono">Jan 2025</time><p>The Solana Winternitz Vault ships: an opt-in, hash-based vault for quantum-resistant storage.</p></li>
+        <li><time class="mono">Dec 2025</time><p>Project Eleven and the Solana Foundation run a Solana testnet with post-quantum signatures.</p></li>
+        <li><time class="mono">Mar 2026</time><p>Google Quantum AI: a 256-bit elliptic curve could fall to under 1,200 logical qubits, in minutes.</p></li>
+        <li><time class="mono">Apr 2026</time><p>Anza and Firedancer each implement Falcon signatures for Solana, ready if the threat becomes credible.</p></li>
+        <li class="now"><time class="mono">Oct 2026</time><p>LATTICE: forge a post-quantum key for your Solana wallet, in your browser.</p></li>
+        <li class="open"><time class="mono">Q-day</time><p>Not on any calendar yet. Your key can be ready before it is.</p></li>
+      </ol>
+    </section>
+
+    <!-- ============ §7 TOKEN ============ -->
+    <section class="sec token" id="token">
+      <div class="sec-head">
+        <p class="sec-num mono">§7</p>
+        <div>
+          <h2 class="h2 token-title">$LATTICE</h2>
+          <p class="sec-lede">The forge is free for everyone. The token adds weight to your seal.</p>
+        </div>
+        <div class="token-specimen" data-specimen-slot="token" data-fill="0.34" data-backdrop="circle:0.44" aria-hidden="true"></div>
+      </div>
+      <div class="token-grid">
+        <div class="perk">
+          <h3 class="h3">Level 5 seals</h3>
+          <p>Hold $LATTICE and co-sign. Your key is reforged at NIST’s highest security category, ML-DSA-87 or Falcon-1024, and your card says so.</p>
+        </div>
+        <div class="perk">
+          <h3 class="h3">First in line</h3>
+          <p>When the vault opens, co-signed holder seals get the first places in the queue.</p>
+        </div>
+        <div class="perk">
+          <h3 class="h3">Vault fund</h3>
+          <p>Creator fees go to a public wallet that funds the vault program. Its balance is read live from Solana.</p>
+          <p class="fund mono" data-fund hidden><span>Balance</span> <b data-fund-sol>…</b> SOL</p>
+        </div>
+      </div>
+      <div class="ca" data-ca>
+        <span class="ca-label">Contract address</span>
+        <code class="ca-value mono" data-ca-value>Posted on X at launch</code>
+        <button type="button" class="btn btn-ghost btn-sm" data-ca-copy hidden>Copy</button>
+        <a class="btn btn-solid" data-buy href="#" target="_blank" rel="noopener">Buy $LATTICE</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-top">
+      <a class="brand" href="#top" aria-label="Back to top">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id='mft' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#FBFBFB'/><stop offset='1' stop-color='#F0F0F0'/></linearGradient><linearGradient id='mff' x1='0' y1='0' x2='0.45' y2='1'><stop offset='0' stop-color='#EFEFEF'/><stop offset='1' stop-color='#DADADA'/></linearGradient><linearGradient id='mfr' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#A9A9A9'/><stop offset='1' stop-color='#7E7E7E'/></linearGradient><filter id='mfsoft' x='-2%' y='-2%' width='104%' height='104%'><feGaussianBlur stdDeviation='0.35'/></filter></defs><rect width='64' height='64' rx='14.1' fill='#000'/><rect x='.5' y='.5' width='63' height='63' rx='13.6' fill='none' stroke='#fff' stroke-opacity='.10'/><g><polygon points='32.77,49.71 33.97,48.51 33.97,53.49 32.77,54.69' fill='url(#mfr)'/><polygon points='38.37,49.71 39.57,48.51 39.57,53.49 38.37,54.69' fill='url(#mfr)'/><polygon points='43.97,49.71 45.17,48.51 45.17,53.49 43.97,54.69' fill='url(#mfr)'/><polygon points='49.57,49.71 50.77,48.51 50.77,53.49 49.57,54.69' fill='url(#mfr)'/><polygon points='27.79,49.71 32.77,49.71 33.97,48.51 28.99,48.51' fill='url(#mft)'/><polygon points='33.39,49.71 38.37,49.71 39.57,48.51 34.59,48.51' fill='url(#mft)'/><polygon points='38.99,49.71 43.97,49.71 45.17,48.51 40.19,48.51' fill='url(#mft)'/><polygon points='44.59,49.71 49.57,49.71 50.77,48.51 45.79,48.51' fill='url(#mft)'/><polygon points='27.17,44.11 28.37,42.91 28.37,47.89 27.17,49.09' fill='url(#mfr)'/><polygon points='32.77,44.11 33.97,42.91 33.97,47.89 32.77,49.09' fill='url(#mfr)'/><polygon points='38.37,44.11 39.57,42.91 39.57,47.89 38.37,49.09' fill='url(#mfr)'/><polygon points='22.19,44.11 27.17,44.11 28.37,42.91 23.39,42.91' fill='url(#mft)'/><polygon points='27.79,44.11 32.77,44.11 33.97,42.91 28.99,42.91' fill='url(#mft)'/><polygon points='33.39,44.11 38.37,44.11 39.57,42.91 34.59,42.91' fill='url(#mft)'/><polygon points='27.17,38.51 28.37,37.31 28.37,42.29 27.17,43.49' fill='url(#mfr)'/><polygon points='32.77,38.51 33.97,37.31 33.97,42.29 32.77,43.49' fill='url(#mfr)'/><polygon points='22.19,38.51 27.17,38.51 28.37,37.31 23.39,37.31' fill='url(#mft)'/><polygon points='27.79,38.51 32.77,38.51 33.97,37.31 28.99,37.31' fill='url(#mft)'/><polygon points='27.17,32.91 28.37,31.71 28.37,36.69 27.17,37.89' fill='url(#mfr)'/><polygon points='32.77,32.91 33.97,31.71 33.97,36.69 32.77,37.89' fill='url(#mfr)'/><polygon points='22.19,32.91 27.17,32.91 28.37,31.71 23.39,31.71' fill='url(#mft)'/><polygon points='27.79,32.91 32.77,32.91 33.97,31.71 28.99,31.71' fill='url(#mft)'/><polygon points='27.17,27.31 28.37,26.11 28.37,31.09 27.17,32.29' fill='url(#mfr)'/><polygon points='32.77,27.31 33.97,26.11 33.97,31.09 32.77,32.29' fill='url(#mfr)'/><polygon points='22.19,27.31 27.17,27.31 28.37,26.11 23.39,26.11' fill='url(#mft)'/><polygon points='27.79,27.31 32.77,27.31 33.97,26.11 28.99,26.11' fill='url(#mft)'/><polygon points='27.17,21.71 28.37,20.51 28.37,25.49 27.17,26.69' fill='url(#mfr)'/><polygon points='32.77,21.71 33.97,20.51 33.97,25.49 32.77,26.69' fill='url(#mfr)'/><polygon points='22.19,21.71 27.17,21.71 28.37,20.51 23.39,20.51' fill='url(#mft)'/><polygon points='27.79,21.71 32.77,21.71 33.97,20.51 28.99,20.51' fill='url(#mft)'/><polygon points='21.57,16.11 22.77,14.91 22.77,19.89 21.57,21.09' fill='url(#mfr)'/><polygon points='27.17,16.11 28.37,14.91 28.37,19.89 27.17,21.09' fill='url(#mfr)'/><polygon points='32.77,16.11 33.97,14.91 33.97,19.89 32.77,21.09' fill='url(#mfr)'/><polygon points='16.59,16.11 21.57,16.11 22.77,14.91 17.79,14.91' fill='url(#mft)'/><polygon points='22.19,16.11 27.17,16.11 28.37,14.91 23.39,14.91' fill='url(#mft)'/><polygon points='27.79,16.11 32.77,16.11 33.97,14.91 28.99,14.91' fill='url(#mft)'/><polygon points='21.57,10.51 22.77,9.31 22.77,14.29 21.57,15.49' fill='url(#mfr)'/><polygon points='27.17,10.51 28.37,9.31 28.37,14.29 27.17,15.49' fill='url(#mfr)'/><polygon points='32.77,10.51 33.97,9.31 33.97,14.29 32.77,15.49' fill='url(#mfr)'/><polygon points='16.59,10.51 21.57,10.51 22.77,9.31 17.79,9.31' fill='url(#mft)'/><polygon points='22.19,10.51 27.17,10.51 28.37,9.31 23.39,9.31' fill='url(#mft)'/><polygon points='27.79,10.51 32.77,10.51 33.97,9.31 28.99,9.31' fill='url(#mft)'/><rect x='27.79' y='49.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='33.39' y='49.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='38.99' y='49.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='44.59' y='49.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='44.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='44.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='33.39' y='44.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='38.51' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='38.51' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='32.91' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='32.91' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='27.31' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='27.31' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='21.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='21.71' width='4.98' height='4.98' fill='url(#mff)'/><rect x='16.59' y='16.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='16.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='16.11' width='4.98' height='4.98' fill='url(#mff)'/><rect x='16.59' y='10.51' width='4.98' height='4.98' fill='url(#mff)'/><rect x='22.19' y='10.51' width='4.98' height='4.98' fill='url(#mff)'/><rect x='27.79' y='10.51' width='4.98' height='4.98' fill='url(#mff)'/></g></svg>
+        <span>Lattice</span>
+      </a>
+      <p class="foot-tag">Built for the day after Q-day.</p>
+      <nav class="foot-links" aria-label="Links">
+        <a data-x href="#" target="_blank" rel="noopener">X</a>
+        <a data-buy href="#" target="_blank" rel="noopener">pump.fun</a>
+        <a href="https://github.com/paulmillr/noble-post-quantum" target="_blank" rel="noopener">noble-post-quantum</a>
+        <a href="https://csrc.nist.gov/pubs/fips/204/final" target="_blank" rel="noopener">FIPS 204</a>
+      </nav>
+    </div>
+    <p class="foot-legal">LATTICE never asks for your seed phrase. Scanning reads public data only. The vault is not live and holds no funds. Post-quantum signatures here are produced with open-source code; Falcon follows Round 3, which may differ from the final FN-DSA standard. Nothing on this site is financial advice.</p>
+  </footer>
+
+  <div class="companion" aria-hidden="true">
+    <div class="companion-slot" data-specimen-slot="corner" data-fill="0.4" data-backdrop="circle:0.5" data-backdrop-follow="corner"></div>
+    <p class="companion-label mono"><i></i><span data-companion-text>Your key, exposed</span></p>
+  </div>
+
+  <div class="toast mono" role="status" aria-live="polite" data-toast></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

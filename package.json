@@ -1,0 +1,27 @@
+{
+  "name": "lattice",
+  "version": "1.0.0",
+  "description": "LATTICE \u2014 post-quantum key forge for Solana. Built for the day after Q-day.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:file": "vite build --mode file"
+  },
+  "dependencies": {
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource/fragment-mono": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@noble/curves": "^2.4.0",
+    "@noble/hashes": "^2.4.0",
+    "@noble/post-quantum": "^0.7.1",
+    "lenis": "^1.3.27",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10",
+    "vite-plugin-singlefile": "^2.0.3"
+  },
+  "type": "module",
+  "private": true
+}
